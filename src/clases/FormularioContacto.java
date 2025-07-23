@@ -150,6 +150,10 @@ public class FormularioContacto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        lblTiempo = new javax.swing.JLabel();
+        btnLlamar = new javax.swing.JButton();
+        btnColgar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(412, 634));
@@ -490,11 +494,21 @@ public class FormularioContacto extends javax.swing.JFrame {
         jLabel10.setText("Atendiendo a:");
 
         jTextField1.setEditable(false);
+        jTextField1.setText("Teléfono");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+
+        jTextField2.setText("Nombre");
+
+        lblTiempo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTiempo.setText("0:00:00");
+
+        btnLlamar.setText("Llamar");
+
+        btnColgar.setText("Colgar");
 
         javax.swing.GroupLayout panelControlLlamadasLayout = new javax.swing.GroupLayout(panelControlLlamadas);
         panelControlLlamadas.setLayout(panelControlLlamadasLayout);
@@ -504,10 +518,23 @@ public class FormularioContacto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelControlLlamadasLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField1))
-                .addGap(18, 18, 18)
+                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTextField2)))
+                        .addGap(18, 18, 18))
+                    .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                                .addComponent(btnLlamar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnColgar))
+                            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(lblTiempo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
@@ -530,7 +557,16 @@ public class FormularioContacto extends javax.swing.JFrame {
                     .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(lblTiempo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLlamar)
+                            .addComponent(btnColgar))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -798,6 +834,8 @@ public class FormularioContacto extends javax.swing.JFrame {
     private javax.swing.JButton bImportar;
     private javax.swing.JButton bLimpiar;
     private javax.swing.JButton bLimpiarBuscar;
+    private javax.swing.JButton btnColgar;
+    private javax.swing.JButton btnLlamar;
     private javax.swing.ButtonGroup gMostrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -818,6 +856,8 @@ public class FormularioContacto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblTiempo;
     private javax.swing.JList listaContactos;
     private javax.swing.JRadioButton mostrarCed;
     private javax.swing.JRadioButton mostrarTodo;
