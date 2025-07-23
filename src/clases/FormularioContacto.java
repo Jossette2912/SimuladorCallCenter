@@ -20,7 +20,7 @@ public class FormularioContacto extends javax.swing.JFrame {
 //final variable constante, no cambia
     final int INITIAL_WEIGHT = 450; // Ancho inicial de la ventana
     final int INITIAL_HEIGHT = 400; // Alto inicial de la ventana
-    final String TITLE = "Simulador de Call Center Prueba"; // Título de la ventana
+    final String TITLE = "Simulador de Call Center"; // Título de la ventana
     final String SEARCH = "Buscar"; // Texto de búsqueda por defecto
 
     private Archivo archivo; // Manejo de archivos para guardar y cargar contactos
