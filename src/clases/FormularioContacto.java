@@ -9,6 +9,7 @@ import archivos.Archivo;
 import java.awt.Color;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
@@ -141,7 +142,7 @@ public class FormularioContacto extends javax.swing.JFrame {
         listaContactos = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        panelControlLlamadas = new javax.swing.JPanel();
+        panelLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -481,7 +482,7 @@ public class FormularioContacto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelControlLlamadas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelLlamadas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jScrollPane2.setViewportView(jList1);
 
@@ -510,64 +511,63 @@ public class FormularioContacto extends javax.swing.JFrame {
 
         btnColgar.setText("Colgar");
 
-        javax.swing.GroupLayout panelControlLlamadasLayout = new javax.swing.GroupLayout(panelControlLlamadas);
-        panelControlLlamadas.setLayout(panelControlLlamadasLayout);
-        panelControlLlamadasLayout.setHorizontalGroup(
-            panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelControlLlamadasLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelLlamadasLayout = new javax.swing.GroupLayout(panelLlamadas);
+        panelLlamadas.setLayout(panelLlamadasLayout);
+        panelLlamadasLayout.setHorizontalGroup(
+            panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelControlLlamadasLayout.createSequentialGroup()
-                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLlamadasLayout.createSequentialGroup()
+                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                            .addGroup(panelLlamadasLayout.createSequentialGroup()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
                                 .addComponent(jTextField2)))
                         .addGap(18, 18, 18))
-                    .addGroup(panelControlLlamadasLayout.createSequentialGroup()
-                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                    .addGroup(panelLlamadasLayout.createSequentialGroup()
+                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLlamadasLayout.createSequentialGroup()
                                 .addComponent(btnLlamar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnColgar))
-                            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+                            .addGroup(panelLlamadasLayout.createSequentialGroup()
                                 .addGap(51, 51, 51)
                                 .addComponent(lblTiempo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
-                .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
-        panelControlLlamadasLayout.setVerticalGroup(
-            panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelControlLlamadasLayout.createSequentialGroup()
+        panelLlamadasLayout.setVerticalGroup(
+            panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelControlLlamadasLayout.createSequentialGroup()
-                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelLlamadasLayout.createSequentialGroup()
+                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(lblTiempo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelControlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLlamar)
-                            .addComponent(btnColgar))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(btnColgar)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
@@ -577,7 +577,7 @@ public class FormularioContacto extends javax.swing.JFrame {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelControlLlamadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelLlamadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(panelContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -599,7 +599,7 @@ public class FormularioContacto extends javax.swing.JFrame {
                         .addComponent(panelLibreta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(panelControlLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 29, Short.MAX_VALUE))
         );
 
@@ -702,8 +702,10 @@ public class FormularioContacto extends javax.swing.JFrame {
     private void bBusqueAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBusqueAActionPerformed
         this.estadoB = !estadoB;
         if (estadoB) {
-            int w = INITIAL_WEIGHT + panelLibreta.getWidth() + 5;
-            super.setSize(w, INITIAL_HEIGHT);
+            int w = INITIAL_WEIGHT + panelOpciones.getWidth() + 5;
+            int h = INITIAL_HEIGHT + panelLlamadas.getHeight() + 5;
+            
+            super.setSize(w, h);
 
             //Llenar lista de contactos//
             //Las siguientes validaciones evitan que se limpie la infomacion en pantalla al esconder la lista
@@ -862,8 +864,8 @@ public class FormularioContacto extends javax.swing.JFrame {
     private javax.swing.JRadioButton mostrarCed;
     private javax.swing.JRadioButton mostrarTodo;
     private javax.swing.JPanel panelContacto;
-    private javax.swing.JPanel panelControlLlamadas;
     private javax.swing.JPanel panelLibreta;
+    private javax.swing.JPanel panelLlamadas;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JComboBox<String> provinciasComboBox;
