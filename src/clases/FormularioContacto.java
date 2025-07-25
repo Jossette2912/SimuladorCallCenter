@@ -150,7 +150,7 @@ public class FormularioContacto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaContactos = new javax.swing.JList();
         btnContactar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSiguiente = new javax.swing.JButton();
         panelLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPendientes = new javax.swing.JList<>();
@@ -464,10 +464,11 @@ public class FormularioContacto extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Siguiente");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSiguiente.setText("Siguiente");
+        btnSiguiente.setEnabled(false);
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSiguienteActionPerformed(evt);
             }
         });
 
@@ -482,7 +483,7 @@ public class FormularioContacto extends javax.swing.JFrame {
                     .addGroup(panelLibretaLayout.createSequentialGroup()
                         .addComponent(btnContactar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(btnSiguiente)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLibretaLayout.setVerticalGroup(
@@ -493,7 +494,7 @@ public class FormularioContacto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(panelLibretaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnContactar)
-                    .addComponent(jButton2))
+                    .addComponent(btnSiguiente))
                 .addContainerGap())
         );
 
@@ -812,6 +813,8 @@ public class FormularioContacto extends javax.swing.JFrame {
             //lm
         }
         jListPendientes.setModel(lmPendientes);
+        btnContactar.setEnabled(pendientes.isEmpty());
+        //btnSiguiente.setEnabled(!pendientes.isEmpty());
     }
     private void btnContactarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContactarActionPerformed
         lmPendientes = new DefaultListModel<>();
@@ -822,17 +825,31 @@ public class FormularioContacto extends javax.swing.JFrame {
             lmPendientes.addElement(c.getNombreCompleto());
         }
         jListPendientes.setModel(lmPendientes);
+        btnContactar.setEnabled(false);
+        btnSiguiente.setEnabled(true);
+        
+        txtAteTelefono.setText("Telefono");
+        txtAteNombre.setText("Nombre");
     }//GEN-LAST:event_btnContactarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Contacto siguiente = pendientes.poll();
-        txtAteTelefono.setText(siguiente.getTelefono());
-        txtAteNombre.setText(siguiente.getNombreCompleto());
-        //atendidos.agregar(siguiente);
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+
+        Contacto siguiente = pendientes.poll(); //cuando ya no hay contactos, la cola devuelve null
+        //para corregir el error validamos
+        if (siguiente != null) {//siguiente tiene un contacto, lo muestra (o sea, si sguiente no es null)
+            txtAteTelefono.setText(siguiente.getTelefono());
+            txtAteNombre.setText(siguiente.getNombreCompleto());
+        } else { //si siguiente es null
+
+            JOptionPane.showMessageDialog(null, "No hay contactos pendientes.");
+            txtAteTelefono.setText("Telefono");
+            txtAteNombre.setText("Nombre");
+            btnSiguiente.setEnabled(false);
+        }
 
         actualizarListas();
-        //JOptionPane.showMessageDialog(null, siguiente.getNombreCompleto());
-    }//GEN-LAST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void txtAteTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAteTelefonoActionPerformed
         // TODO add your handling code here:
@@ -908,8 +925,8 @@ public class FormularioContacto extends javax.swing.JFrame {
     private javax.swing.JButton btnColgar;
     private javax.swing.JButton btnContactar;
     private javax.swing.JButton btnLlamar;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.ButtonGroup gMostrar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
