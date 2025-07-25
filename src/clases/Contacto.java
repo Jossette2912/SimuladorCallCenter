@@ -59,6 +59,13 @@ public class Contacto {
         return apellidos;
     }
 
+   /**
+     * @return the nombreCompleto
+     */
+    public String getNombreCompleto() {
+        return nombre + " " + apellidos;
+    }
+
     /**
      * @param apellidos the apellidos to set
      */
