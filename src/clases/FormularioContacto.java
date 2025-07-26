@@ -937,22 +937,14 @@ public class FormularioContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnColgarActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-//        if (pendientes.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "No hay contactos pendientes.");
-//            txtAteNombre.setText("Nombre");
-//            txtAteTelefono.setText("Telefono");
-//            btnSiguiente.setEnabled(false);
-//            btnContactar.setEnabled(true);
-//            
-//            
-//        } else {
+
             actual = pendientes.peek(); //toma el dato, pero no lo quita de la cola
             txtAteNombre.setText(actual.getNombreCompleto());
             txtAteTelefono.setText(actual.getTelefono());
             btnSiguiente.setEnabled(true);
             btnIniciar.setEnabled(false);
             btnLlamar.setEnabled(true);
-//        }
+
     }//GEN-LAST:event_btnIniciarActionPerformed
     /**
      * @param args the command line arguments
