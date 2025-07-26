@@ -540,6 +540,7 @@ public class FormularioContacto extends javax.swing.JFrame {
         lblTiempo.setText("00:00");
 
         btnLlamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/llamar_32x32.png"))); // NOI18N
+        btnLlamar.setEnabled(false);
         btnLlamar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLlamarActionPerformed(evt);
@@ -547,6 +548,7 @@ public class FormularioContacto extends javax.swing.JFrame {
         });
 
         btnColgar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/colgar_32x32.png"))); // NOI18N
+        btnColgar.setEnabled(false);
         btnColgar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColgarActionPerformed(evt);
@@ -875,6 +877,7 @@ public class FormularioContacto extends javax.swing.JFrame {
             txtAteTelefono.setText("Teléfono");
             btnSiguiente.setEnabled(false);
             JOptionPane.showMessageDialog(this, "No hay más contactos.");
+            btnLlamar.setEnabled(false);
             lblTiempo.setText("00:00");
         }
 
@@ -934,19 +937,22 @@ public class FormularioContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnColgarActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        if (pendientes.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hay contactos pendientes.");
-            txtAteNombre.setText("Nombre");
-            txtAteTelefono.setText("Telefono");
-            btnSiguiente.setEnabled(false);
-            btnContactar.setEnabled(true);
-        } else {
+//        if (pendientes.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "No hay contactos pendientes.");
+//            txtAteNombre.setText("Nombre");
+//            txtAteTelefono.setText("Telefono");
+//            btnSiguiente.setEnabled(false);
+//            btnContactar.setEnabled(true);
+//            
+//            
+//        } else {
             actual = pendientes.peek(); //toma el dato, pero no lo quita de la cola
             txtAteNombre.setText(actual.getNombreCompleto());
             txtAteTelefono.setText(actual.getTelefono());
             btnSiguiente.setEnabled(true);
             btnIniciar.setEnabled(false);
-        }
+            btnLlamar.setEnabled(true);
+//        }
     }//GEN-LAST:event_btnIniciarActionPerformed
     /**
      * @param args the command line arguments
