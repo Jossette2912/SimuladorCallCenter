@@ -33,13 +33,16 @@ public class FormularioContacto extends javax.swing.JFrame {
     private String[] stringContactos; // Arreglo para almacenar los contactos como cadenas
     private String cedula; // Cédula del contacto
     private Queue<Contacto> pendientes = new LinkedList<>(); // Cola para manejar contactos
-    private Stack<Contacto> atendidos; //Pila de contactos atendidos
+    private Stack<Contacto> atendidos = new Stack<>();
+    // private Stack<Contacto> atendidos; //Pila de contactos atendidos
     private boolean estadoB = false; // Estado del botón
     private boolean estadoPanel = true; // Estado del panel
     private int selTipo = 0; // Tipo de selección (mostrar cédulas o todo)
     //clases encargadas de manipular las listas de la interfaz gráfica
     private DefaultListModel<String> lmPendientes = new DefaultListModel<>();
     private DefaultListModel<String> lmAtendidos = new DefaultListModel<>();
+
+    private Contacto actual = null; //se inicializa en null porque aún no tiene contacto
 
     //Constructor de la GUI
     public FormularioContacto() {
@@ -151,6 +154,7 @@ public class FormularioContacto extends javax.swing.JFrame {
         listaContactos = new javax.swing.JList();
         btnContactar = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
         panelLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPendientes = new javax.swing.JList<>();
@@ -472,6 +476,14 @@ public class FormularioContacto extends javax.swing.JFrame {
             }
         });
 
+        btnIniciar.setText("Iniciar");
+        btnIniciar.setEnabled(false);
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLibretaLayout = new javax.swing.GroupLayout(panelLibreta);
         panelLibreta.setLayout(panelLibretaLayout);
         panelLibretaLayout.setHorizontalGroup(
@@ -482,9 +494,11 @@ public class FormularioContacto extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelLibretaLayout.createSequentialGroup()
                         .addComponent(btnContactar)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSiguiente)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         panelLibretaLayout.setVerticalGroup(
             panelLibretaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +508,8 @@ public class FormularioContacto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(panelLibretaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnContactar)
-                    .addComponent(btnSiguiente))
+                    .addComponent(btnSiguiente)
+                    .addComponent(btnIniciar))
                 .addContainerGap())
         );
 
@@ -522,16 +537,16 @@ public class FormularioContacto extends javax.swing.JFrame {
         txtAteNombre.setText("Nombre");
 
         lblTiempo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTiempo.setText("0:00:00");
+        lblTiempo.setText("00:00");
 
-        btnLlamar.setText("Llamar");
+        btnLlamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/llamar_32x32.png"))); // NOI18N
         btnLlamar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLlamarActionPerformed(evt);
             }
         });
 
-        btnColgar.setText("Colgar");
+        btnColgar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/colgar_32x32.png"))); // NOI18N
         btnColgar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColgarActionPerformed(evt);
@@ -549,19 +564,16 @@ public class FormularioContacto extends javax.swing.JFrame {
                         .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(panelLlamadasLayout.createSequentialGroup()
-                                .addComponent(txtAteTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTiempo)
+                                    .addComponent(txtAteTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
-                                .addComponent(txtAteNombre)))
+                                .addComponent(txtAteNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)))
                         .addGap(18, 18, 18))
                     .addGroup(panelLlamadasLayout.createSequentialGroup()
-                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLlamadasLayout.createSequentialGroup()
-                                .addComponent(btnLlamar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnColgar))
-                            .addGroup(panelLlamadasLayout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(lblTiempo)))
+                        .addComponent(btnLlamar)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnColgar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -586,15 +598,16 @@ public class FormularioContacto extends javax.swing.JFrame {
                         .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAteTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                             .addComponent(txtAteNombre))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTiempo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLlamar)
-                            .addComponent(btnColgar)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(btnColgar))
+                        .addGap(12, 12, 12))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
@@ -811,9 +824,19 @@ public class FormularioContacto extends javax.swing.JFrame {
         for (Contacto c : pendientes) {
             lmPendientes.addElement(c.getNombreCompleto());
             //lm
+
         }
+        lmAtendidos.clear();
+//        for (Contacto c : atendidos) {
+//            lmAtendidos.addElement(c.getNombreCompleto());
+//        }
+        for (int i = atendidos.size() - 1; i >= 0; i--) { // mostrar del más reciente al más antiguo
+            lmAtendidos.addElement(atendidos.get(i).getNombreCompleto());
+        }
+        jListAtendidos.setModel(lmAtendidos);
         jListPendientes.setModel(lmPendientes);
         btnContactar.setEnabled(pendientes.isEmpty());
+
         //btnSiguiente.setEnabled(!pendientes.isEmpty());
     }
     private void btnContactarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContactarActionPerformed
@@ -823,31 +846,58 @@ public class FormularioContacto extends javax.swing.JFrame {
             pendientes.add(c);
             //modificar modelo de la lista
             lmPendientes.addElement(c.getNombreCompleto());
+
         }
         jListPendientes.setModel(lmPendientes);
         btnContactar.setEnabled(false);
-        btnSiguiente.setEnabled(true);
-        
+        btnIniciar.setEnabled(true);
+
         txtAteTelefono.setText("Telefono");
         txtAteNombre.setText("Nombre");
     }//GEN-LAST:event_btnContactarActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
 
-        Contacto siguiente = pendientes.poll(); //cuando ya no hay contactos, la cola devuelve null
-        //para corregir el error validamos
-        if (siguiente != null) {//siguiente tiene un contacto, lo muestra (o sea, si sguiente no es null)
-            txtAteTelefono.setText(siguiente.getTelefono());
-            txtAteNombre.setText(siguiente.getNombreCompleto());
-        } else { //si siguiente es null
+        if (actual != null) {
+            pendientes.poll(); // se elimina de la cola
+            atendidos.push(actual); // se agrega a la pila
+        }
 
-            JOptionPane.showMessageDialog(null, "No hay contactos pendientes.");
-            txtAteTelefono.setText("Telefono");
+        if (!pendientes.isEmpty()) {
+            actual = pendientes.peek(); // siguiente contacto
+            txtAteNombre.setText(actual.getNombreCompleto());
+            txtAteTelefono.setText(actual.getTelefono());
+            lblTiempo.setText("00:00");
+            
+        } else {
+            actual = null;
             txtAteNombre.setText("Nombre");
+            txtAteTelefono.setText("Teléfono");
             btnSiguiente.setEnabled(false);
+            JOptionPane.showMessageDialog(this, "No hay más contactos.");
+            lblTiempo.setText("00:00");
         }
 
         actualizarListas();
+//        Contacto siguiente = pendientes.poll(); //cuando ya no hay contactos, la cola devuelve null poll para sacar elementos de una cola
+
+//        //para corregir el error validamos
+//        if (siguiente != null) {//siguiente tiene un contacto, lo muestra (o sea, si sguiente no es null)
+//
+//            txtAteTelefono.setText(siguiente.getTelefono());
+//            txtAteNombre.setText(siguiente.getNombreCompleto());
+//
+//            atendidos.push(siguiente);
+//
+//        } else { //si siguiente es null
+//
+//            JOptionPane.showMessageDialog(null, "No hay contactos pendientes.");
+//            txtAteTelefono.setText("Telefono");
+//            txtAteNombre.setText("Nombre");
+//            btnSiguiente.setEnabled(false);
+//        }
+//
+//        actualizarListas();
 
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
@@ -857,6 +907,7 @@ public class FormularioContacto extends javax.swing.JFrame {
 
     private Timer temporizador; //para contar el tiempo
     private int segundos = 0; //cuenta el tiempo que ha pasado
+    
     private void btnLlamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlamarActionPerformed
         // TODO add your handling code here:
         segundos = 0; // reinicia el tiempo
@@ -869,8 +920,8 @@ public class FormularioContacto extends javax.swing.JFrame {
         });
 
         temporizador.start();
-        btnLlamar.setEnabled(false); // desactivar para evitar múltiples timers
-        btnColgar.setEnabled(true);  // activar botón de colgar
+        btnLlamar.setEnabled(false);
+        btnColgar.setEnabled(true);
     }//GEN-LAST:event_btnLlamarActionPerformed
 
     private void btnColgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColgarActionPerformed
@@ -881,6 +932,22 @@ public class FormularioContacto extends javax.swing.JFrame {
         btnLlamar.setEnabled(true);
         btnColgar.setEnabled(false);
     }//GEN-LAST:event_btnColgarActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        if (pendientes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay contactos pendientes.");
+            txtAteNombre.setText("Nombre");
+            txtAteTelefono.setText("Telefono");
+            btnSiguiente.setEnabled(false);
+            btnContactar.setEnabled(true);
+        } else {
+            actual = pendientes.peek(); //toma el dato, pero no lo quita de la cola
+            txtAteNombre.setText(actual.getNombreCompleto());
+            txtAteTelefono.setText(actual.getTelefono());
+            btnSiguiente.setEnabled(true);
+            btnIniciar.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnIniciarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -924,6 +991,7 @@ public class FormularioContacto extends javax.swing.JFrame {
     private javax.swing.JButton bLimpiarBuscar;
     private javax.swing.JButton btnColgar;
     private javax.swing.JButton btnContactar;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnLlamar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.ButtonGroup gMostrar;
